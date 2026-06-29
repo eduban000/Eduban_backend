@@ -176,7 +176,7 @@ export class PaymentController {
             data: {
               studentName: (req as any).user?.username || 'Learner',
               courseName: transaction.courseId || 'Course',
-              instructorName: (req as any).user?.instructorName || 'StarkEd Instructor',
+              instructorName: (req as any).user?.instructorName || 'Eduban Instructor',
               enrollmentId: transaction.enrollmentId || paymentIntentId,
               startDate: new Date().toISOString(),
               courseUrl: `${process.env.FRONTEND_URL || ''}/courses/${transaction.courseId || ''}`,

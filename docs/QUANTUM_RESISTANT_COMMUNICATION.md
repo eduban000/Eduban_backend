@@ -429,7 +429,7 @@ class SecureCommunicationClient {
 REDIS_HOST=localhost
 REDIS_PORT=6379
 REDIS_PASSWORD=your-redis-password
-MONGODB_URI=mongodb://localhost:27017/starked
+MONGODB_URI=mongodb://localhost:27017/eduban
 JWT_SECRET=your-jwt-secret
 ```
 
@@ -443,7 +443,7 @@ services:
       - "3000:3000"
     environment:
       - REDIS_HOST=redis
-      - MONGODB_URI=mongodb://mongo:27017/starked
+      - MONGODB_URI=mongodb://mongo:27017/eduban
     depends_on:
       - redis
       - mongo

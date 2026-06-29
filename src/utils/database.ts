@@ -15,7 +15,7 @@ let isMigrationChecked = false;
 export function getPool(): Pool {
   if (!pool) {
     pool = new Pool({
-      connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/starked',
+      connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/eduban',
       max: 20,
       idleTimeoutMillis: 30000,
       connectionTimeoutMillis: 5000,

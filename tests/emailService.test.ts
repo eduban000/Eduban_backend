@@ -44,7 +44,7 @@ function createTestEmailService(overrides?: Partial<any>): EmailService {
     maxEmailsPerHour: 10,
     maxRetries: 3,
     retryDelayMs: 100,
-    fromAddress: 'test@starked.edu',
+    fromAddress: 'test@eduban.edu',
     ...overrides,
   });
 }
@@ -94,10 +94,10 @@ describe('Email Templates', () => {
           courseName: 'Blockchain 101',
           issueDate: '2026-07-01',
           txHash: '0xabc123def456',
-          credentialUrl: 'https://starked.edu/credentials/456',
-          verifyUrl: 'https://starked.edu/verify/456',
-          unsubscribeUrl: 'https://starked.edu/settings',
-          privacyUrl: 'https://starked.edu/privacy',
+          credentialUrl: 'https://eduban.edu/credentials/456',
+          verifyUrl: 'https://eduban.edu/verify/456',
+          unsubscribeUrl: 'https://eduban.edu/settings',
+          privacyUrl: 'https://eduban.edu/privacy',
         },
       });
 
@@ -121,9 +121,9 @@ describe('Email Templates', () => {
           paymentMethod: 'Stellar',
           paymentDate: '2026-07-01',
           txHash: '0xdef456',
-          receiptUrl: 'https://starked.edu/receipts/789',
-          unsubscribeUrl: 'https://starked.edu/settings',
-          privacyUrl: 'https://starked.edu/privacy',
+          receiptUrl: 'https://eduban.edu/receipts/789',
+          unsubscribeUrl: 'https://eduban.edu/settings',
+          privacyUrl: 'https://eduban.edu/privacy',
         },
       });
 
@@ -146,9 +146,9 @@ describe('Email Templates', () => {
           percentage: 85,
           letterGrade: 'B',
           feedback: 'Great work on the smart contract!',
-          assignmentUrl: 'https://starked.edu/assignments/final',
-          unsubscribeUrl: 'https://starked.edu/settings',
-          privacyUrl: 'https://starked.edu/privacy',
+          assignmentUrl: 'https://eduban.edu/assignments/final',
+          unsubscribeUrl: 'https://eduban.edu/settings',
+          privacyUrl: 'https://eduban.edu/privacy',
         },
       });
 
@@ -167,9 +167,9 @@ describe('Email Templates', () => {
           studentName: 'Charlie Davis',
           changeDate: '2026-07-01T12:00:00Z',
           ipAddress: '192.168.1.1',
-          securityUrl: 'https://starked.edu/security',
-          unsubscribeUrl: 'https://starked.edu/settings',
-          privacyUrl: 'https://starked.edu/privacy',
+          securityUrl: 'https://eduban.edu/security',
+          unsubscribeUrl: 'https://eduban.edu/settings',
+          privacyUrl: 'https://eduban.edu/privacy',
         },
       });
 
@@ -189,9 +189,9 @@ describe('Email Templates', () => {
           ipAddress: '10.0.0.1',
           location: 'Lagos, Nigeria',
           unrecognizedDevice: true,
-          securityUrl: 'https://starked.edu/security',
-          unsubscribeUrl: 'https://starked.edu/settings',
-          privacyUrl: 'https://starked.edu/privacy',
+          securityUrl: 'https://eduban.edu/security',
+          unsubscribeUrl: 'https://eduban.edu/settings',
+          privacyUrl: 'https://eduban.edu/privacy',
         },
       });
 

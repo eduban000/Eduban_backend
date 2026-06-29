@@ -19,13 +19,13 @@ set -e
 DB_HOST=${DATABASE_HOST:-localhost}
 DB_PORT=${DATABASE_PORT:-5432}
 DB_USER=${DATABASE_USER:-postgres}
-DB_NAME=${DATABASE_NAME:-starked}
+DB_NAME=${DATABASE_NAME:-eduban}
 PGPASSWORD=${DATABASE_PASSWORD:-postgres}
 export PGPASSWORD
 
 BACKUP_TYPE=${1:-daily} # daily, weekly, monthly
 BACKUP_DIR=${BACKUP_DIR:-"/tmp/backups"}
-S3_BUCKET=${S3_BUCKET:-"s3://starked-backups"}
+S3_BUCKET=${S3_BUCKET:-"s3://eduban-backups"}
 ENCRYPTION_KEY=${BACKUP_ENCRYPTION_KEY:-"my-super-secret-aes-256-key"}
 
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")

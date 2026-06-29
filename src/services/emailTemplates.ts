@@ -99,8 +99,8 @@ const TEMPLATE_SUBJECTS: Record<string, string> = {
   credentialIssued: '🏆 New Credential Issued — {{credentialName}}',
   paymentReceipt: '💳 Payment Receipt — {{courseName}}',
   assignmentGraded: '📝 Assignment Graded — {{assignmentTitle}} ({{letterGrade}})',
-  passwordChanged: '🔒 Your StarkEd Password Has Been Changed',
-  newLoginAlert: '🔑 New Login to Your StarkEd Account',
+  passwordChanged: '🔒 Your Eduban Password Has Been Changed',
+  newLoginAlert: '🔑 New Login to Your Eduban Account',
 };
 
 const TEMPLATE_SIMPLE_TEXT: Record<string, (data: any) => string> = {
@@ -112,12 +112,12 @@ const TEMPLATE_SIMPLE_TEXT: Record<string, (data: any) => string> = {
     `Enrollment ID: ${data.enrollmentId}\n` +
     `Start Date: ${data.startDate}\n\n` +
     `Get started: ${data.courseUrl}\n\n` +
-    `— The StarkEd Team\n\n` +
+    `— The Eduban Team\n\n` +
     `Manage preferences: ${data.unsubscribeUrl}`,
 
   credentialIssued: (data: CredentialIssuedData) =>
     `Hi ${data.studentName},\n\n` +
-    `Congratulations! You've earned a new credential on StarkEd.\n\n` +
+    `Congratulations! You've earned a new credential on Eduban.\n\n` +
     `Credential: ${data.credentialName}\n` +
     `Credential ID: ${data.credentialId}\n` +
     `Course: ${data.courseName}\n` +
@@ -125,7 +125,7 @@ const TEMPLATE_SIMPLE_TEXT: Record<string, (data: any) => string> = {
     `Transaction Hash: ${data.txHash}\n\n` +
     `View credential: ${data.credentialUrl}\n` +
     `Verify on blockchain: ${data.verifyUrl}\n\n` +
-    `— The StarkEd Team\n\n` +
+    `— The Eduban Team\n\n` +
     `Manage preferences: ${data.unsubscribeUrl}`,
 
   paymentReceipt: (data: PaymentReceiptData) =>
@@ -138,7 +138,7 @@ const TEMPLATE_SIMPLE_TEXT: Record<string, (data: any) => string> = {
     `Date: ${data.paymentDate}\n` +
     (data.txHash ? `Transaction Hash: ${data.txHash}\n` : '') +
     `\nDownload receipt: ${data.receiptUrl}\n\n` +
-    `— The StarkEd Team\n\n` +
+    `— The Eduban Team\n\n` +
     `Manage preferences: ${data.unsubscribeUrl}`,
 
   assignmentGraded: (data: AssignmentGradedData) =>
@@ -149,23 +149,23 @@ const TEMPLATE_SIMPLE_TEXT: Record<string, (data: any) => string> = {
     `Letter Grade: ${data.letterGrade}\n` +
     (data.feedback ? `Feedback: "${data.feedback}"\n` : '') +
     `\nView assignment: ${data.assignmentUrl}\n\n` +
-    `— The StarkEd Team\n\n` +
+    `— The Eduban Team\n\n` +
     `Manage preferences: ${data.unsubscribeUrl}`,
 
   passwordChanged: (data: PasswordChangedData) =>
     `Hi ${data.studentName},\n\n` +
-    `Your StarkEd account password was changed successfully.\n\n` +
+    `Your Eduban account password was changed successfully.\n\n` +
     `Date: ${data.changeDate}\n` +
     `IP Address: ${data.ipAddress}\n\n` +
     `If you made this change, no further action is required.\n` +
     `If you did NOT change your password, please secure your account immediately:\n` +
     `${data.securityUrl}\n\n` +
-    `— The StarkEd Security Team\n\n` +
+    `— The Eduban Security Team\n\n` +
     `Manage preferences: ${data.unsubscribeUrl}`,
 
   newLoginAlert: (data: NewLoginAlertData) =>
     `Hi ${data.studentName},\n\n` +
-    `A new sign-in to your StarkEd account was detected.\n\n` +
+    `A new sign-in to your Eduban account was detected.\n\n` +
     `Date: ${data.loginDate}\n` +
     `Device/Browser: ${data.userAgent}\n` +
     `IP Address: ${data.ipAddress}\n` +
@@ -173,7 +173,7 @@ const TEMPLATE_SIMPLE_TEXT: Record<string, (data: any) => string> = {
     (data.unrecognizedDevice ? '\n⚠️ Unrecognized device! If this wasn\'t you, secure your account now.\n' : '') +
     `\nReview activity: ${data.securityUrl}\n` +
     `If this was you, you can safely ignore this email.\n\n` +
-    `— The StarkEd Security Team\n\n` +
+    `— The Eduban Security Team\n\n` +
     `Manage preferences: ${data.unsubscribeUrl}`,
 };
 
@@ -241,7 +241,7 @@ class EmailTemplates {
     const text = textGenerator ? textGenerator(data as any) : '';
 
     // Generate subject line
-    const subjectTemplate = TEMPLATE_SUBJECTS[type] || 'StarkEd Notification';
+    const subjectTemplate = TEMPLATE_SUBJECTS[type] || 'Eduban Notification';
     const subject = renderTemplate(subjectTemplate, data as any);
 
     return { html, text, subject };

@@ -1,6 +1,6 @@
 # Ant Colony Optimization System
 
-A comprehensive swarm intelligence optimization system for the StarkEd Education platform, implementing Ant Colony Optimization (ACO) algorithms for learning path optimization, resource allocation, dynamic replanning, and swarm coordination.
+A comprehensive swarm intelligence optimization system for the Eduban Education platform, implementing Ant Colony Optimization (ACO) algorithms for learning path optimization, resource allocation, dynamic replanning, and swarm coordination.
 
 ## 🎯 Features
 
@@ -435,7 +435,7 @@ GET /api/optimization/realtime
 
 ## 📄 License
 
-This optimization system is part of the StarkEd Education platform and follows the project's MIT License.
+This optimization system is part of the Eduban Education platform and follows the project's MIT License.
 
 ## 🔗 Related Documentation
 

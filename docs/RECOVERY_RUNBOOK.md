@@ -1,9 +1,9 @@
-# StarkEd Database Recovery Runbook
+# Eduban Database Recovery Runbook
 
 This document outlines the procedure to restore the PostgreSQL database from our automated encrypted backups.
 
 ## Backup Strategy Overview
-- **Location:** Local (`/tmp/backups`) and Cloud Storage (AWS S3: `s3://starked-backups`)
+- **Location:** Local (`/tmp/backups`) and Cloud Storage (AWS S3: `s3://eduban-backups`)
 - **Encryption:** AES-256 (Key managed via `BACKUP_ENCRYPTION_KEY` env var)
 - **Retention:** 7 daily, 4 weekly, 3 monthly
 - **WAL Archiving:** Configured in PostgreSQL for Point-In-Time Recovery (PITR).
@@ -18,8 +18,8 @@ This document outlines the procedure to restore the PostgreSQL database from our
 1. **Locate the Backup:**
    Find the encrypted backup file locally or download it from S3:
    ```bash
-   aws s3 ls s3://starked-backups/daily/
-   aws s3 cp s3://starked-backups/daily/starked_daily_YYYYMMDD_HHMMSS.sql.enc .
+   aws s3 ls s3://eduban-backups/daily/
+   aws s3 cp s3://eduban-backups/daily/eduban_daily_YYYYMMDD_HHMMSS.sql.enc .
    ```
 
 2. **Execute the Restore Script:**

@@ -34,7 +34,7 @@ export class FileUploadService {
       region: process.env.AWS_REGION || 'us-east-1'
     });
     
-    this.bucketName = process.env.AWS_S3_BUCKET || 'starked-education-files';
+    this.bucketName = process.env.AWS_S3_BUCKET || 'eduban-files';
   }
 
   async uploadFiles(

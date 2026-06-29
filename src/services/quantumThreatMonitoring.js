@@ -735,7 +735,7 @@ class QuantumThreatMonitoringService extends EventEmitter {
 
         return new Promise((resolve) => {
             const client = feedUrl.startsWith('https') ? https : http;
-            const req    = client.get(feedUrl, { headers: { 'User-Agent': 'StarkEd-ThreatMonitor/2.0' } }, (res) => {
+            const req    = client.get(feedUrl, { headers: { 'User-Agent': 'Eduban-ThreatMonitor/2.0' } }, (res) => {
                 let body = '';
                 res.on('data', chunk => { body += chunk; });
                 res.on('end', () => {

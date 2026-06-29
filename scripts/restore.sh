@@ -14,7 +14,7 @@ set -e
 DB_HOST=${DATABASE_HOST:-localhost}
 DB_PORT=${DATABASE_PORT:-5432}
 DB_USER=${DATABASE_USER:-postgres}
-DB_NAME=${DATABASE_NAME:-starked}
+DB_NAME=${DATABASE_NAME:-eduban}
 PGPASSWORD=${DATABASE_PASSWORD:-postgres}
 export PGPASSWORD
 
@@ -26,7 +26,7 @@ MODE=$2
 
 if [ -z "$BACKUP_FILE" ]; then
     echo "Usage: $0 <path_to_encrypted_backup_file> [--verify]"
-    echo "Example: $0 /tmp/backups/daily/starked_daily_20230101_120000.sql.enc"
+    echo "Example: $0 /tmp/backups/daily/eduban_daily_20230101_120000.sql.enc"
     exit 1
 fi
 

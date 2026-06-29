@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Global Content Delivery Optimization System is a comprehensive solution designed to dramatically improve content delivery performance for the StarkEd Education platform. This system implements intelligent multi-CDN routing, adaptive bitrate streaming, intelligent compression, network-aware adaptation, edge computing, and comprehensive analytics to achieve the goal of **50% faster global content delivery** while maintaining **40% bandwidth reduction** without quality loss.
+The Global Content Delivery Optimization System is a comprehensive solution designed to dramatically improve content delivery performance for the Eduban Education platform. This system implements intelligent multi-CDN routing, adaptive bitrate streaming, intelligent compression, network-aware adaptation, edge computing, and comprehensive analytics to achieve the goal of **50% faster global content delivery** while maintaining **40% bandwidth reduction** without quality loss.
 
 ## Architecture
 
@@ -368,8 +368,8 @@ CMD ["npm", "start"]
 
 ```bash
 # Build and run
-docker build -t starked-cdn-optimization .
-docker run -p 3001:3001 starked-cdn-optimization
+docker build -t eduban-cdn-optimization .
+docker run -p 3001:3001 eduban-cdn-optimization
 ```
 
 ### Kubernetes Deployment
@@ -391,7 +391,7 @@ spec:
     spec:
       containers:
       - name: cdn-optimization
-        image: starked-cdn-optimization:latest
+        image: eduban-cdn-optimization:latest
         ports:
         - containerPort: 3001
         env:
@@ -515,8 +515,8 @@ grep "optimization:completed" logs/cdn-optimization.log | jq '.processingTime'
 
 ```bash
 # Clone repository
-git clone https://github.com/jobbykings/starked-education.git
-cd starked-education/backend
+git clone https://github.com/millystellar/eduban-backend.git
+cd eduban-backend
 
 # Install dependencies
 npm install
@@ -554,9 +554,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 For support and questions:
 
 - **Documentation**: [Full API Documentation](./docs/api.md)
-- **Issues**: [GitHub Issues](https://github.com/jobbykings/starked-education/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/jobbykings/starked-education/discussions)
-- **Email**: support@starked-education.org
+- **Issues**: [GitHub Issues](https://github.com/millystellar/eduban-backend/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/millystellar/eduban-backend/discussions)
+- **Email**: support@eduban.org
 
 ---
 

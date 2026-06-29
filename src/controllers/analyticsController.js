@@ -22,7 +22,7 @@ function getExportPool() {
     exportPool = new Pool({
       connectionString:
         process.env.DATABASE_URL ||
-        'postgresql://postgres:postgres@localhost:5432/starked',
+        'postgresql://postgres:postgres@localhost:5432/eduban',
     });
   }
   return exportPool;

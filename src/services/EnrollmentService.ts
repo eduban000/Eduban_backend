@@ -292,7 +292,7 @@ export class EnrollmentService {
       userId: enrollment.userId,
       courseId: enrollment.courseId,
       issuedAt: new Date(),
-      certificateUrl: `https://certificates.starked-education.org/${uuidv4()}`,
+      certificateUrl: `https://certificates.eduban.org/${uuidv4()}`,
       blockchainHash: `0x${Buffer.from(uuidv4()).toString('hex')}`
     };
 

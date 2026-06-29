@@ -1,7 +1,7 @@
 {
-  "name": "starked-education-backend",
+  "name": "eduban-backend",
   "version": "1.0.0",
-  "description": "Backend API for StarkEd decentralized education platform",
+  "description": "Backend API for Eduban decentralized education platform",
   "main": "src/index.js",
   "scripts": {
     "start": "node dist/index.js",
@@ -121,6 +121,6 @@
     "express",
     "postgresql"
   ],
-  "author": "jobbykings",
+  "author": "Meshmulla",
   "license": "MIT"
 }

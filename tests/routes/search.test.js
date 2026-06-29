@@ -22,7 +22,7 @@ describe('Search routes', () => {
         expect(response.status).toBe(200);
         expect(response.body.success).toBe(true);
         expect(response.body.data.results.length).toBeGreaterThan(0);
-        expect(response.body.data.analytics.engine).toBe('starked-discovery-in-memory');
+        expect(response.body.data.analytics.engine).toBe('eduban-discovery-in-memory');
         expect(response.body.data.facets.categories.length).toBeGreaterThan(0);
     });
 

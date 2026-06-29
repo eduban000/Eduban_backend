@@ -174,7 +174,7 @@ router.get(
     try {
       const settings = {
         general: {
-          siteName: process.env.SITE_NAME || 'StarkEd Education Platform',
+          siteName: process.env.SITE_NAME || 'Eduban Education Platform',
           siteDescription:
             process.env.SITE_DESCRIPTION ||
             'Decentralized education on Stellar',

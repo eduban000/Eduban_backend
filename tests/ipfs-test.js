@@ -20,7 +20,7 @@ async function testIpfsIntegration() {
 
     // Test 2: Create a test file
     console.log('📄 Creating test file...');
-    const testContent = 'Hello, StarkEd IPFS Integration! This is a test file.';
+    const testContent = 'Hello, Eduban IPFS Integration! This is a test file.';
     const testBuffer = Buffer.from(testContent);
     const testFile = {
       buffer: testBuffer,

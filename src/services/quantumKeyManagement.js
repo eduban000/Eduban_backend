@@ -345,7 +345,7 @@ class QuantumKeyManagementService {
         if (hex) return Buffer.from(hex, 'hex').slice(0, 32);
         // Stable deterministic fallback for development — MUST set QUANTUM_MASTER_KEY in production
         console.warn('[SECURITY] QUANTUM_MASTER_KEY not set. Using deterministic dev fallback. Set this env var in production.');
-        return crypto.createHash('sha256').update('starked-education-quantum-dev-key').digest();
+        return crypto.createHash('sha256').update('eduban-quantum-dev-key').digest();
     }
 
     async _encryptPrivateKey(privateKey) {

@@ -141,7 +141,7 @@ class DiscoveryService {
                 indexedDocuments: this.catalog.length,
                 realtimeIndexedAt: this.lastIndexedAt,
                 abVariant: variant,
-                engine: 'starked-discovery-in-memory'
+                engine: 'eduban-discovery-in-memory'
             }
         };
     }
@@ -412,7 +412,7 @@ class DiscoveryService {
             variantBreakdown,
             popularQueries,
             searchEngine: {
-                provider: 'starked-discovery-in-memory',
+                provider: 'eduban-discovery-in-memory',
                 supportsRealtimeIndexing: true,
                 lastIndexedAt: this.lastIndexedAt
             },
@@ -494,7 +494,7 @@ class DiscoveryService {
         const review = course.reviewHighlights[0];
 
         return {
-            reviewSnippet: review ? `${review.reviewer}: ${review.quote}` : 'Trusted by active StarkEd learners',
+            reviewSnippet: review ? `${review.reviewer}: ${review.quote}` : 'Trusted by active Eduban learners',
             enrollmentLabel: `${course.enrollmentCount.toLocaleString('en-US')} learners enrolled`,
             ratingLabel: `${course.rating.toFixed(1)} average rating from ${course.reviewCount} reviews`
         };
@@ -711,7 +711,7 @@ class DiscoveryService {
                 rating: 4.8,
                 reviewCount: 214,
                 enrollmentCount: 5830,
-                provider: 'StarkEd Studio',
+                provider: 'Eduban Studio',
                 thumbnail: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80',
                 tags: ['AI', 'Prompting', 'Teaching'],
                 skills: ['Prompt Design', 'AI Literacy', 'Lesson Planning'],
@@ -761,7 +761,7 @@ class DiscoveryService {
                 rating: 4.9,
                 reviewCount: 88,
                 enrollmentCount: 1810,
-                provider: 'StarkEd Protocol',
+                provider: 'Eduban Protocol',
                 thumbnail: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=900&q=80',
                 tags: ['Rust', 'Smart Contracts', 'Stellar'],
                 skills: ['Rust', 'Contract Testing', 'Access Control'],
@@ -861,7 +861,7 @@ class DiscoveryService {
                 rating: 4.4,
                 reviewCount: 54,
                 enrollmentCount: 980,
-                provider: 'StarkEd Studio',
+                provider: 'Eduban Studio',
                 thumbnail: 'https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80',
                 tags: ['Catalog Sync', 'Indexing', 'Data Pipelines'],
                 skills: ['ETL', 'Schema Design', 'Search Operations'],
@@ -961,7 +961,7 @@ class DiscoveryService {
                 rating: 4.3,
                 reviewCount: 46,
                 enrollmentCount: 1310,
-                provider: 'StarkEd Studio',
+                provider: 'Eduban Studio',
                 thumbnail: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=900&q=80',
                 tags: ['Mobile', 'Microlearning', 'Operations'],
                 skills: ['Content Packaging', 'Editorial Workflows', 'Mobile UX'],

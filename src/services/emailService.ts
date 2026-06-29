@@ -80,7 +80,7 @@ const defaultConfig: EmailServiceConfig = {
   retryDelayMs: 1000,
   maxEmailsPerHour: 10,
   rateLimitWindowMs: 60 * 60 * 1000, // 1 hour
-  fromAddress: process.env.EMAIL_FROM || 'noreply@starked.edu',
+  fromAddress: process.env.EMAIL_FROM || 'noreply@eduban.edu',
   smtp: {
     host: process.env.EMAIL_HOST || 'localhost',
     port: parseInt(process.env.EMAIL_PORT || '587', 10),

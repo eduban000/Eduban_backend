@@ -1,5 +1,5 @@
 """
-Quantum Computing Module for Starked Education Platform
+Quantum Computing Module for Eduban Education Platform
 Advanced quantum algorithms for optimization, machine learning, and complex analytics
 """
 
@@ -22,4 +22,4 @@ __all__ = [
 ]
 
 __version__ = '1.0.0'
-__author__ = 'Starked Education Quantum Team'
+__author__ = 'Eduban Education Quantum Team'

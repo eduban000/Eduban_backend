@@ -161,7 +161,7 @@ module.exports = {
     validLogin: {
       address: 'GD5DJ3B7MHLRWGS7QKXYYEJZRGFQMVJ7T7S6DLPNHP5TGB7FZ7NBHJVP',
       signature: 'valid-signature-123456789',
-      message: 'Login to StarkEd Education',
+      message: 'Login to Eduban Education',
       timestamp: Date.now()
     },
     
@@ -175,7 +175,7 @@ module.exports = {
     expiredLogin: {
       address: 'GD5DJ3B7MHLRWGS7QKXYYEJZRGFQMVJ7T7S6DLPNHP5TGB7FZ7NBHJVP',
       signature: 'valid-signature-123456789',
-      message: 'Login to StarkEd Education',
+      message: 'Login to Eduban Education',
       timestamp: Date.now() - 300000 // 5 minutes ago (expired)
     }
   },

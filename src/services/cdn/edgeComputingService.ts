@@ -144,7 +144,7 @@ export class EdgeComputingService {
           city: 'New York',
           coordinates: { latitude: 40.7128, longitude: -74.0060 }
         },
-        endpoint: 'https://edge-na-east-1.starked-education.com',
+        endpoint: 'https://edge-na-east-1.eduban.com',
         capabilities: {
           supportedFormats: ['mp4', 'webm', 'jpg', 'png', 'webp', 'avif'],
           maxFileSize: 500,
@@ -197,7 +197,7 @@ export class EdgeComputingService {
           city: 'London',
           coordinates: { latitude: 51.5074, longitude: -0.1278 }
         },
-        endpoint: 'https://edge-eu-west-1.starked-education.com',
+        endpoint: 'https://edge-eu-west-1.eduban.com',
         capabilities: {
           supportedFormats: ['mp4', 'webm', 'jpg', 'png', 'webp'],
           maxFileSize: 300,
@@ -250,7 +250,7 @@ export class EdgeComputingService {
           city: 'Singapore',
           coordinates: { latitude: 1.3521, longitude: 103.8198 }
         },
-        endpoint: 'https://edge-asia-east-1.starked-education.com',
+        endpoint: 'https://edge-asia-east-1.eduban.com',
         capabilities: {
           supportedFormats: ['mp4', 'webm', 'jpg', 'png'],
           maxFileSize: 200,
@@ -388,7 +388,7 @@ export class EdgeComputingService {
     const job: EdgeJob = {
       id: this.generateJobId(),
       type: operation.type,
-      inputUrl: `https://cdn.starked-education.com/content/${contentId}`,
+      inputUrl: `https://cdn.eduban.com/content/${contentId}`,
       parameters: operation.parameters,
       priority: request.priority,
       status: 'pending',
@@ -623,7 +623,7 @@ export class EdgeComputingService {
       job.completedAt = new Date();
       job.progress = 100;
       job.result = {
-        outputUrl: `https://edge-${node.id}.starked-education.com/output/${job.id}`,
+        outputUrl: `https://edge-${node.id}.eduban.com/output/${job.id}`,
         fileSize: Math.floor(Math.random() * 10000000), // Random file size
         processingTime,
         nodeUsed: node.id,

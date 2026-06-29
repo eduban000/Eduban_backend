@@ -300,7 +300,7 @@ class QuantumEncryptionService {
     async deriveKey(password, salt, algorithm = 'CRYSTALS_KYBER', keyLength = 32) {
         try {
             const saltBuffer = Buffer.isBuffer(salt) ? salt : Buffer.from(salt);
-            const info       = Buffer.from(`starked-education:${algorithm}`);
+            const info       = Buffer.from(`eduban:${algorithm}`);
             const ikm        = Buffer.from(password);
 
             // HKDF extract

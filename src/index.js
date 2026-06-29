@@ -194,7 +194,7 @@ const { ValidationError } = require('./utils/errors');
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({
-    message: 'StarkEd Education Backend API',
+    message: 'Eduban Education Backend API',
     version: '1.0.0',
     status: 'running',
     timestamp: new Date().toISOString(),
@@ -236,7 +236,7 @@ async function startServer() {
     await transactionEvents.startListening();
 
     server.listen(PORT, () => {
-      console.log(`🚀 StarkEd Education Backend running on port ${PORT}`);
+      console.log(`🚀 Eduban Education Backend running on port ${PORT}`);
       console.log(`📚 Quiz Management API available at /api/v1/quizzes`);
       console.log(`📊 Event Logger API available at /api/v1/events`);
       console.log(`🔄 Sync API available at /api/v1/sync`);

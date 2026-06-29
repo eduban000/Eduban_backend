@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document provides a comprehensive guide to the Ant Colony Optimization (ACO) system implemented for the StarkEd education platform. The ACO system optimizes learning paths, resource allocation, and provides dynamic replanning capabilities using swarm intelligence principles.
+This document provides a comprehensive guide to the Ant Colony Optimization (ACO) system implemented for the Eduban education platform. The ACO system optimizes learning paths, resource allocation, and provides dynamic replanning capabilities using swarm intelligence principles.
 
 ## Architecture
 
@@ -529,4 +529,4 @@ Monitor key metrics through the analytics dashboard:
 
 ## License
 
-This ACO implementation is part of the StarkEd project and follows the MIT license.
+This ACO implementation is part of the Eduban project and follows the MIT license.

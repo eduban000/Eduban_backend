@@ -194,7 +194,7 @@ export class AssignmentNotificationService {
         <h2 style="color: #333;">${notification.title}</h2>
         <p style="color: #666; line-height: 1.6;">${notification.message}</p>
         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
-          <small style="color: #999;">This notification was sent from StarkEd Education Platform.</small>
+          <small style="color: #999;">This notification was sent from Eduban Education Platform.</small>
         </div>
       </div>
     `;

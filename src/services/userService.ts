@@ -20,7 +20,7 @@ class UserService {
       return {
         owner: address,
         username: 'student_one',
-        email: 'student@starked.edu',
+        email: 'student@eduban.edu',
         bio: 'Lifelong learner exploring the Stellar ecosystem',
         avatarUrl: 'https://example.com/avatar.png',
         createdAt: Date.now() - 10000000,

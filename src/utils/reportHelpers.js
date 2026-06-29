@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/starked',
+  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/eduban',
 });
 
 const getReportStats = async () => {

@@ -13,7 +13,7 @@ describe('Content Delivery System Tests', () => {
 
   beforeAll(async () => {
     // Connect to test database
-    await mongoose.connect(process.env.MONGODB_TEST_URI || 'mongodb://localhost:27017/starked-education-test');
+    await mongoose.connect(process.env.MONGODB_TEST_URI || 'mongodb://localhost:27017/eduban-test');
     
     // Create test users
     testUser = new User({
