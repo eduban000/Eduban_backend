@@ -2,7 +2,7 @@
 
 ## 🚀 Quick Start
 
-This guide will help you set up and run the Transaction Queue Management System for the StarkEd education platform.
+This guide will help you set up and run the Transaction Queue Management System for the Eduban education platform.
 
 ## 📋 Prerequisites
 
@@ -20,8 +20,8 @@ Before you begin, ensure you have the following installed:
 
 ```bash
 # Clone from the forked repository
-git clone https://github.com/olaleyeolajide81-sketch/starked-education.git
-cd starked-education
+git clone https://github.com/millystellar/eduban-backend.git
+cd eduban
 
 # Switch to the feature branch
 git checkout Create-Transaction-Queue-Management-System
@@ -58,7 +58,7 @@ NODE_ENV=development
 PORT=3001
 
 # Database Configuration
-DATABASE_URL=postgresql://username:password@localhost:5432/starked_education
+DATABASE_URL=postgresql://username:password@localhost:5432/eduban
 REDIS_HOST=localhost
 REDIS_PORT=6379
 REDIS_PASSWORD=
@@ -76,7 +76,7 @@ JWT_EXPIRES_IN=24h
 
 # Email Configuration (NEW)
 EMAIL_PROVIDER=smtp                              # smtp | sendgrid | ses
-EMAIL_FROM=noreply@starked.edu                   # From address for all emails
+EMAIL_FROM=noreply@eduban.edu                   # From address for all emails
 EMAIL_HOST=smtp.example.com                       # SMTP host (for smtp provider)
 EMAIL_PORT=587                                    # SMTP port
 EMAIL_SECURE=false                                # Use TLS
@@ -136,13 +136,13 @@ redis-cli ping
 ```bash
 # Pull and run Redis container
 docker run -d \
-  --name starked-redis \
+  --name eduban-redis \
   -p 6379:6379 \
   -v redis-data:/data \
   redis:alpine redis-server --appendonly yes
 
 # Test connection
-docker exec -it starked-redis redis-cli ping
+docker exec -it eduban-redis redis-cli ping
 ```
 
 ### 5. Database Setup
@@ -157,9 +157,9 @@ brew install postgresql
 
 # Create database and user
 sudo -u postgres psql
-CREATE DATABASE starked_education;
-CREATE USER starked_user WITH PASSWORD 'your_password';
-GRANT ALL PRIVILEGES ON DATABASE starked_education TO starked_user;
+CREATE DATABASE eduban;
+CREATE USER eduban_user WITH PASSWORD 'your_password';
+GRANT ALL PRIVILEGES ON DATABASE eduban TO eduban_user;
 \q
 
 # Run migrations (if available)
@@ -222,7 +222,7 @@ services:
     environment:
       - NODE_ENV=production
       - REDIS_HOST=redis
-      - DATABASE_URL=postgresql://postgres:password@postgres:5432/starked_education
+      - DATABASE_URL=postgresql://postgres:password@postgres:5432/eduban
     depends_on:
       - redis
       - postgres
@@ -239,7 +239,7 @@ services:
   postgres:
     image: postgres:13
     environment:
-      - POSTGRES_DB=starked_education
+      - POSTGRES_DB=eduban
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
     ports:
@@ -504,7 +504,7 @@ redis-cli flushdb  # Use with caution!
 sudo systemctl status postgresql
 
 # Test database connection
-psql -h localhost -U starked_user -d starked_education
+psql -h localhost -U eduban_user -d eduban
 
 # Check connection pool settings
 # Increase pool size in your database configuration
@@ -522,7 +522,7 @@ npm install -g pm2
 cat > ecosystem.config.js << EOF
 module.exports = {
   apps: [{
-    name: 'starked-transaction-queue',
+    name: 'eduban-transaction-queue',
     script: './src/index.js',
     instances: 'max',
     exec_mode: 'cluster',
@@ -593,30 +593,30 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y nginx certbot python3-certbot-nginx
 
 # Create application user
-sudo useradd -m -s /bin/bash starked
-sudo usermod -aG sudo starked
+sudo useradd -m -s /bin/bash eduban
+sudo usermod -aG sudo eduban
 ```
 
 ### 2. Application Deployment
 
 ```bash
 # Clone repository
-sudo -u starked git clone https://github.com/olaleyeolajide81-sketch/starked-education.git /home/starked/app
-cd /home/starked/app
+sudo -u eduban git clone https://github.com/millystellar/eduban-backend.git /home/eduban/app
+cd /home/eduban/app
 
 # Install dependencies
-sudo -u starked npm install --production
+sudo -u eduban npm install --production
 
 # Setup PM2
-sudo -u starked npm install -g pm2
-sudo -u starked pm2 startup
+sudo -u eduban npm install -g pm2
+sudo -u eduban pm2 startup
 sudo env PATH=$PATH:/usr/bin pm2 deploy production
 ```
 
 ### 3. Nginx Configuration
 
 ```nginx
-# /etc/nginx/sites-available/starked-education
+# /etc/nginx/sites-available/eduban
 server {
     listen 80;
     server_name your-domain.com;
@@ -637,7 +637,7 @@ server {
 
 ```bash
 # Enable site
-sudo ln -s /etc/nginx/sites-available/starked-education /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/eduban /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
 
@@ -662,7 +662,7 @@ redis-cli --cluster create 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 --cluste
 ### Load Balancing
 
 ```nginx
-upstream starked_backend {
+upstream eduban_backend {
     server localhost:3001;
     server localhost:3002;
     server localhost:3003;
@@ -673,7 +673,7 @@ server {
     server_name your-domain.com;
 
     location / {
-        proxy_pass http://starked_backend;
+        proxy_pass http://eduban_backend;
         # ... other proxy settings
     }
 }
@@ -700,4 +700,4 @@ If you encounter issues:
 
 ---
 
-**Congratulations!** Your Transaction Queue Management System is now ready to handle Stellar blockchain operations for the StarkEd education platform. 🚀
+**Congratulations!** Your Transaction Queue Management System is now ready to handle Stellar blockchain operations for the Eduban education platform. 🚀
