@@ -12,6 +12,10 @@ exports.up = async function (knex) {
         table.boolean('is_active').defaultTo(true).comment('Whether subscription is active');
         table.timestamp('subscribed_at').defaultTo(knex.fn.now()).comment('Subscription timestamp');
         table.timestamp('unsubscribed_at').nullable().comment('Unsubscription timestamp');
+
+        table.index(['email'], 'idx_newsletter_subscribers_email');
+        table.index(['unsubscribe_token'], 'idx_newsletter_subscribers_token');
+        table.index(['is_active'], 'idx_newsletter_subscribers_active');
     });    
 };
 
