@@ -45,4 +45,11 @@ export async function createSubscriber(
 
 export async function reactivateSubscriber(
     email: string
-): Promise<NewsletterSubscriber> {}
+): Promise<NewsletterSubscriber> {
+    await knex('newsletter_subscribers').where({ email }).update({
+        is_active: true,
+        unsubscribed_at: null,
+    });
+
+    return findSubscriberByEmail(email) as Promise<NewsletterSubscriber>;
+}
