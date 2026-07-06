@@ -19,7 +19,12 @@ export async function findSubscriberByEmail(
 
 export async function findSubscriberByToken(
     token: string
-): Promise<NewsletterSubscriber | null> {}
+): Promise<NewsletterSubscriber | null> {
+    const row = await knex('newsletter_subscribers')
+        .where({ unsubscribe_token: token })
+        .first();
+    return row || null;
+}
 
 export async function createSubscriber(
     email: string
