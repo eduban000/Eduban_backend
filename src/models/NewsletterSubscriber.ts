@@ -28,7 +28,20 @@ export async function findSubscriberByToken(
 
 export async function createSubscriber(
     email: string
-): Promise<NewsletterSubscriber> {}
+): Promise<NewsletterSubscriber> {
+    const id = `sub_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
+    const unsubscribe_token = crypto.randomBytes(32).toString('hex');
+    
+    await knex('newsletter_subscribers').insert({
+        id,
+        email,
+        unsubscribe_token,
+        is_active: true,
+        subscribed_at: new Date(),
+    });
+
+    return findSubscriberByEmail(email) as Promise<NewsletterSubscriber>;
+}
 
 export async function reactivateSubscriber(
     email: string
