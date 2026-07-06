@@ -9,3 +9,19 @@ export interface NewsletterSubscriber {
   subscribed_at: Date;
   unsubscribed_at: Date | null;
 }
+
+export async function findSubscriberByEmail(
+    email: string
+): Promise<NewsletterSubscriber | null> {}
+
+export async function findSubscriberByToken(
+    token: string
+): Promise<NewsletterSubscriber | null> {}
+
+export async function createSubscriber(
+    email: string
+): Promise<NewsletterSubscriber> {}
+
+export async function reactivateSubscriber(
+    email: string
+): Promise<NewsletterSubscriber> {}
