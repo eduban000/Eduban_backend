@@ -84,7 +84,7 @@ export type EmailTemplateData =
   | { type: 'paymentReceipt'; data: PaymentReceiptData }
   | { type: 'assignmentGraded'; data: AssignmentGradedData }
   | { type: 'passwordChanged'; data: PasswordChangedData }
-  | { type: 'newLoginAlert'; data: NewLoginAlertData };
+  | { type: 'newLoginAlert'; data: NewLoginAlertData }
   | { type: 'newsletterWelcome'; data: NewsletterWelcomeData };
 
 export interface RenderedEmail {
@@ -107,6 +107,7 @@ const TEMPLATE_SUBJECTS: Record<string, string> = {
   assignmentGraded: '📝 Assignment Graded — {{assignmentTitle}} ({{letterGrade}})',
   passwordChanged: '🔒 Your Eduban Password Has Been Changed',
   newLoginAlert: '🔑 New Login to Your Eduban Account',
+  newsletterWelcome: '👋 Welcome to the Eduban Newsletter!',
 };
 
 const TEMPLATE_SIMPLE_TEXT: Record<string, (data: any) => string> = {
@@ -181,6 +182,12 @@ const TEMPLATE_SIMPLE_TEXT: Record<string, (data: any) => string> = {
     `If this was you, you can safely ignore this email.\n\n` +
     `— The Eduban Security Team\n\n` +
     `Manage preferences: ${data.unsubscribeUrl}`,
+
+  newsletterWelcome: (data: NewsletterWelcomeData) =>
+    `Welcome!\n\nThank you for subscribing to the Eduban Newsletter.\n\n` +
+    `- The Eduban Team\n\n` +
+    `Unsubscribe: ${data.unsubscribeUrl}\n` +
+    `Privacy Policy: ${data.privacyUrl}`,
 };
 
 /**
