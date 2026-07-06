@@ -92,6 +92,11 @@ export interface RenderedEmail {
   subject: string;
 }
 
+export interface NewsletterWelcomeData{
+  unsubscribeUrl: string;
+  privacyUrl: string;
+}
+
 const TEMPLATE_DIR = path.resolve(__dirname, '../templates/emails');
 
 const TEMPLATE_SUBJECTS: Record<string, string> = {
