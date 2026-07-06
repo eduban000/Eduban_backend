@@ -85,6 +85,7 @@ export type EmailTemplateData =
   | { type: 'assignmentGraded'; data: AssignmentGradedData }
   | { type: 'passwordChanged'; data: PasswordChangedData }
   | { type: 'newLoginAlert'; data: NewLoginAlertData };
+  | { type: 'newsletterWelcome'; data: NewsletterWelcomeData };
 
 export interface RenderedEmail {
   html: string;
