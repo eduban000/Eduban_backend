@@ -12,7 +12,10 @@ export interface NewsletterSubscriber {
 
 export async function findSubscriberByEmail(
     email: string
-): Promise<NewsletterSubscriber | null> {}
+): Promise<NewsletterSubscriber | null> {
+    const row = await knex('newsletter_subscribers').where({ email }).first();
+    return row || null;
+}
 
 export async function findSubscriberByToken(
     token: string
