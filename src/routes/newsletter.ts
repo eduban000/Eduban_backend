@@ -58,6 +58,34 @@ router.post('/', async (req: Request, res: Response) => {
     }
 });
 
-router.get('/unsubscribe', async (req: Request, res: Response) => {});
+// GET /api/v1/newsletter/unsubscribe?token=...
+router.get('/unsubscribe', async (req: Request, res: Response) => {
+    const {token} = req.query;
+
+    if (!token || typeof token !== 'string') {
+        return res.status(400).json({error: 'Invalid unsubscribe token'});
+    }
+
+    try {
+        const subscriber = await findSubscriberByToken(token);
+
+        if (!subscriber) {
+            return res.status(404).json({error: 'Token not found'});
+        }
+
+        if (!subscriber.is_active) {
+            return res.status(200).json({message: 'Already unsubscribed'});
+        }
+
+        await require('../config/database')('newsletter_subscribers')
+            .where({unsubscribe_token: token})
+            .update({ is_active: false, unsubscribed_at: new Date()});
+
+        return res.status(200).json({message: 'Unsubscribed successfully'});
+    }   catch (err) {
+        console.error('Unsubscribe error:', err);
+        return res.status(500).json({error: 'Internal server error'});
+    }
+});
 
 export default router;
