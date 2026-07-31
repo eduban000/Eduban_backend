@@ -17,7 +17,8 @@ export type EmailType =
   | 'paymentReceipt'
   | 'assignmentGraded'
   | 'passwordChanged'
-  | 'newLoginAlert';
+  | 'newLoginAlert'
+  | 'newsletterWelcome';
 
 export interface EmailEvent {
   id: string;

@@ -84,6 +84,8 @@ const agiTutorRoutes = resolveRoute(require('./routes/agiTutorRoutes'));
 // Analytics routes
 const analyticsRoutes = require('./routes/analytics');
 
+const newsletterRoutes = resolveRoute(require('./routes/newsletterRoutes'));
+
 // Initialize Express app
 const app = express();
 const server = createServer(app);
@@ -145,6 +147,7 @@ v1Router.use('/smart-wallet', smartWalletRoutes);
 v1Router.use('/secure-comm', secureCommRoutes);
 v1Router.use('/agi-tutor', agiTutorRoutes);
 v1Router.use('/analytics', analyticsRoutes);
+v1Router.use('/newsletter', newsletterRoutes);
 
 // Autonomous Agents routes
 const autonomousAgentsRoutes = require('./routes/autonomousAgents');
