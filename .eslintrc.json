@@ -5,10 +5,23 @@
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   "env": {
     "node": true,
+    "jest": true,
     "es2020": true
   },
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-vars": "warn"
+    "@typescript-eslint/no-unused-vars": "warn",
+
+    "@typescript-eslint/no-var-requires": "off",
+    "no-undef": "off",
+
+    "no-case-declarations": "warn",
+    "no-useless-escape": "warn",
+    "@typescript-eslint/ban-types": "warn",
+    "prefer-const": "warn",
+    "@typescript-eslint/no-namespace": "warn",
+    "no-dupe-class-members": "warn",
+    "no-unreachable": "warn",
+    "@typescript-eslint/no-loss-of-precision": "warn"
   }
 }

@@ -31,8 +31,8 @@ const { checkRedisConnectivity } = require('../config/redis');
 // Elasticsearch check
 import ElasticsearchService from '../services/search/ElasticsearchService';
 
-// Package version
-const packageJson = require('../../../package.json');
+// Package version (resolved from the repository root: src/routes -> src -> root)
+const packageJson = require('../../package.json');
 
 /**
  * Check Stellar Horizon node health via HTTP

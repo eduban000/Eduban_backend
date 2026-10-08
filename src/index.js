@@ -84,7 +84,15 @@ const agiTutorRoutes = resolveRoute(require('./routes/agiTutorRoutes'));
 // Analytics routes
 const analyticsRoutes = require('./routes/analytics');
 
-const newsletterRoutes = resolveRoute(require('./routes/newsletterRoutes'));
+// Newsletter route is optional/incomplete; load defensively so a missing
+// dependency or module does not crash app startup (mirrors secureCommRoutes above).
+let newsletterRoutes;
+try {
+  newsletterRoutes = resolveRoute(require('./routes/newsletter'));
+} catch (err) {
+  console.warn('Warning: Could not load newsletterRoutes:', err.message);
+  newsletterRoutes = express.Router();
+}
 
 // Initialize Express app
 const app = express();
