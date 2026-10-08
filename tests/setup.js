@@ -25,7 +25,10 @@ jest.mock('../src/services/ipfs', () => ({
   updateFileMetadata: jest.fn()
 }));
 
-const app = require('../src/index');
+// NOTE: do NOT eagerly import the app here. Importing it during global setup
+// binds route modules to the real (unmocked) implementations before a test
+// file's jest.mock() calls take effect, defeating per-suite module mocks.
+// testUtils below imports it lazily instead.
 
 jest.setTimeout(60000);
 
@@ -336,7 +339,7 @@ beforeEach(async () => {
 global.testUtils = {
   // Create authenticated request
   authenticatedRequest: (token) => {
-    return request(app)
+    return request(require('../src/index'))
       .set('Authorization', `Bearer ${token}`);
   },
   
