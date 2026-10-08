@@ -179,6 +179,7 @@ Common endpoints (see route modules under `src/routes` for the full surface):
 | Method | Path | Description |
 |--------|------|-------------|
 | `GET` | `/api/health` | Service health check |
+| `GET` | `/api/v1/public/stats` | Public aggregate stats (learners, credentials, courses) — cached, rate-limited, no auth |
 | `POST` | `/api/auth/login` | Authenticate and receive a JWT |
 | `GET` | `/api/courses` | List / search courses |
 | `POST` | `/api/credentials` | Issue a credential |

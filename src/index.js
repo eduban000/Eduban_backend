@@ -94,6 +94,9 @@ try {
   newsletterRoutes = express.Router();
 }
 
+// Public (unauthenticated) routes — aggregate, non-sensitive marketing data
+const publicRoutes = resolveRoute(require('./routes/public'));
+
 // Initialize Express app
 const app = express();
 const server = createServer(app);
@@ -156,6 +159,7 @@ v1Router.use('/secure-comm', secureCommRoutes);
 v1Router.use('/agi-tutor', agiTutorRoutes);
 v1Router.use('/analytics', analyticsRoutes);
 v1Router.use('/newsletter', newsletterRoutes);
+v1Router.use('/public', publicRoutes);
 
 // Autonomous Agents routes
 const autonomousAgentsRoutes = require('./routes/autonomousAgents');
