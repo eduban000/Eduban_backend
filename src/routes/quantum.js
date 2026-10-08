@@ -1,7 +1,7 @@
-"""
-Quantum Computing API Routes
-RESTful API endpoints for quantum computing services
-"""
+/**
+ * Quantum Computing API Routes
+ * RESTful API endpoints for quantum computing services
+ */
 
 const express = require('express');
 const router = express.Router();
