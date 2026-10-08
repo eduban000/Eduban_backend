@@ -28,7 +28,7 @@ const { globalLimiter } = require('./middleware/rateLimiter');
 const { authenticateToken, requireAdmin } = require('./middleware/auth');
 
 // Import versioning middleware
-const { versionExtractor, createVersionedRouter, SUPPORTED_VERSIONS, DEFAULT_VERSION } = require('./middleware/versioning');
+const { versionExtractor, createVersionedRouter, SUPPORTED_VERSIONS } = require('./middleware/versioning');
 
 // Load environment variables
 dotenv.config();
@@ -124,9 +124,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// Health check routes - mounted before auth middleware so load balancers can access without credentials
+// Health check routes - mounted before auth middleware so load balancers can access without credentials.
+// Exposed at both /health (legacy / probe-friendly) and /api/health (documented public path).
+// Provides: GET .../live (liveness), GET .../ready (readiness), GET ... (comprehensive status).
 const healthRoutes = require('./routes/health').default || require('./routes/health');
 app.use('/health', healthRoutes);
+app.use('/api/health', healthRoutes);
 
 // Apply API version extraction middleware globally
 app.use(versionExtractor);
@@ -197,8 +200,6 @@ app.use('/api/v1', v1Router);
 const v2Router = createVersionedRouter('v2');
 app.use('/api/v2', v2Router);
 
-// Schemas helper for versioned responses
-const { createVersionedResponse } = require('./utils/schemas');
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 const { ValidationError } = require('./utils/errors');
 
@@ -212,15 +213,8 @@ app.get('/', (req, res) => {
   });
 });
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  const version = req.apiVersion || DEFAULT_VERSION;
-  res.json(createVersionedResponse({
-    status: 'healthy',
-    uptime: process.uptime(),
-    supportedVersions: SUPPORTED_VERSIONS,
-  }, version));
-});
+// Note: /api/health is served by the comprehensive health router mounted above
+// (dependency checks + liveness/readiness), replacing the previous static stub.
 
 // Unsupported version handler (only rejects truly unsupported versions)
 app.use('/api/v:version*', (req, res, next) => {
