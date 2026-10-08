@@ -444,4 +444,73 @@ describe('Health Check Endpoints', () => {
       expect(response.body).toHaveProperty('status', 'degraded');
     });
   });
+
+  // The same comprehensive router is also served at the documented public
+  // path /api/health (see issue #4). These tests guard that mount so the
+  // liveness/readiness split and dependency reporting stay available there.
+  describe('Public path: GET /api/health', () => {
+    it('liveness probe responds at /api/health/live without checking dependencies', async () => {
+      const response = await request(app).get('/api/health/live');
+
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('status', 'ok');
+      expect(checkRedisConnectivity).not.toHaveBeenCalled();
+    });
+
+    it('readiness probe returns 503 at /api/health/ready when a dependency is unhealthy', async () => {
+      (database.checkDatabaseConnectivity as jest.Mock).mockResolvedValue({
+        status: 'unhealthy',
+        latencyMs: 2000,
+        error: 'Connection refused'
+      });
+      checkRedisConnectivity.mockResolvedValue({ status: 'healthy', latencyMs: 3 });
+      axios.get.mockResolvedValue({ data: {} });
+
+      const response = await request(app).get('/api/health/ready');
+
+      expect(response.status).toBe(503);
+      expect(response.body).toHaveProperty('status', 'not_ready');
+      // Readiness must not leak detailed error text to load balancers
+      expect(response.body.dependencies.postgres).not.toHaveProperty('error');
+    });
+
+    it('comprehensive check at /api/health reports DB, Redis, and Stellar status', async () => {
+      (database.checkDatabaseConnectivity as jest.Mock).mockResolvedValue({
+        status: 'healthy',
+        latencyMs: 5
+      });
+      checkRedisConnectivity.mockResolvedValue({ status: 'healthy', latencyMs: 3 });
+      axios.get.mockResolvedValue({ data: {} }); // stellar + ipfs reachable
+
+      const response = await request(app).get('/api/health');
+
+      // Comprehensive endpoint always returns 200 and must report the status of
+      // DB, Redis, and Stellar Horizon (the issue's core requirement). Each
+      // reported dependency carries a 'status' field with a known value.
+      expect(response.status).toBe(200);
+      const validStatuses = ['healthy', 'unhealthy'];
+      for (const dep of ['postgres', 'redis', 'stellar']) {
+        expect(response.body.dependencies).toHaveProperty(dep);
+        expect(validStatuses).toContain(response.body.dependencies[dep].status);
+      }
+      expect(response.body).toHaveProperty('version');
+      expect(response.body).toHaveProperty('uptime');
+      expect(['healthy', 'degraded']).toContain(response.body.status);
+    });
+
+    it('comprehensive check at /api/health does not require authentication', async () => {
+      (database.checkDatabaseConnectivity as jest.Mock).mockResolvedValue({
+        status: 'healthy',
+        latencyMs: 5
+      });
+      checkRedisConnectivity.mockResolvedValue({ status: 'healthy', latencyMs: 3 });
+      axios.get.mockResolvedValue({ data: {} });
+
+      // No Authorization header
+      const response = await request(app).get('/api/health');
+
+      expect(response.status).toBe(200);
+      expect(response.body).toHaveProperty('dependencies');
+    });
+  });
 });
