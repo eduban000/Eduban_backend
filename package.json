@@ -32,8 +32,8 @@
     "python:setup": "python -m spacy download en_core_web_sm"
   },
   "dependencies": {
-    "@noble/post-quantum": "^0.2.1",
     "@elastic/elasticsearch": "^9.4.2",
+    "@noble/post-quantum": "^0.2.1",
     "@stellar/stellar-sdk": "^14.5.0",
     "aws-sdk": "^2.1693.0",
     "axios": "^1.5.0",
@@ -58,6 +58,7 @@
     "libsodium-wrappers": "^0.7.13",
     "ml-kmeans": "^6.0.0",
     "ml-matrix": "^6.10.4",
+    "moment": "^2.31.0",
     "mongoose": "^7.5.0",
     "multer": "^1.4.5-lts.1",
     "natural": "^6.5.0",
@@ -73,10 +74,12 @@
     "sentiment": "^5.0.2",
     "sharp": "^0.32.6",
     "socket.io": "^4.7.2",
+    "socket.io-client": "^4.8.4",
     "twilio": "^5.13.1",
     "uuid": "^9.0.1",
     "web-push": "^3.6.7",
-    "winston": "^3.10.0"
+    "winston": "^3.10.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.15",
